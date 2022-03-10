@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-class ProductsSearch extends Component {
+class Home extends Component {
   render() {
     return (
       <div>
+        <Link to="/cart" data-testid="shopping-cart-button">
+          <FaShoppingCart />
+        </Link>
         <h2
           data-testid="home-initial-message"
         >
@@ -14,4 +19,4 @@ class ProductsSearch extends Component {
   }
 }
 
-export default ProductsSearch;
+export default Home;
