@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import SideBar from './SideBar';
+import Sidebar from './Sidebar';
+import './style/home.css';
 
 class Home extends Component {
   render() {
@@ -10,12 +11,15 @@ class Home extends Component {
         <Link to="/cart" data-testid="shopping-cart-button">
           <FaShoppingCart />
         </Link>
-        <SideBar />
-        <h2
-          data-testid="home-initial-message"
-        >
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </h2>
+        <main className="main">
+          <Sidebar />
+          <h2
+            data-testid="home-initial-message"
+          >
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </h2>
+        </main>
+
       </div>
     );
   }
