@@ -23,7 +23,12 @@ class Sidebar extends Component {
       <div className="sidebar">
         { categoriesList.map((category) => (
           <label key={ category.id } htmlFor={ category.id } data-testid="category">
-            <input id={ category.id } name="category" type="radio" value={ category.name } />
+            <input
+              id={ category.id }
+              name="category"
+              type="radio"
+              value={ category.name }
+            />
             { category.name }
           </label>
         ))}
