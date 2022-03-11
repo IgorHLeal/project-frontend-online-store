@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { getCategories } from '../services/api';
+import './style/sidebar.css';
 
-class SideBar extends Component {
+class Sidebar extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,11 +20,16 @@ class SideBar extends Component {
   render() {
     const { categoriesList } = this.state;
     return (
-      <div>
+      <div className="sidebar">
         { categoriesList.map((category) => (
-          <label htmlFor="category" key={ category.id } data-testid="category">
+          <label key={ category.id } htmlFor={ category.id } data-testid="category">
+            <input
+              id={ category.id }
+              name="category"
+              type="radio"
+              value={ category.name }
+            />
             { category.name }
-            <input name="category" type="radio" />
           </label>
         ))}
       </div>
@@ -31,4 +37,4 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+export default Sidebar;
