@@ -1,41 +1,26 @@
 import React from 'react';
-import { getProductsFromQuery } from '../services/api';
+import PropTypes from 'prop-types';
 import './style/search.css';
 import ProductCard from './ProductCard';
 
 class Search extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      searchedWord: '',
-      products: [],
-    };
-  }
-
   handleChange = ({ target }) => {
     const { value } = target;
-    this.setState({
-      searchedWord: value,
-    });
-  }
-
-  handleClick = async () => {
-    const { searchedWord } = this.state;
-    const resultByQuery = await getProductsFromQuery(searchedWord);
-    this.setState({
-      products: resultByQuery.results,
-    });
-  }
+    const { updateSearchWord } = this.props;
+    updateSearchWord(value);
+  };
 
   render() {
-    const { products } = this.state;
+    const { searchDisabled, handleClickSearch, products } = this.props;
+    console.log(products);
     return (
       <div className="search">
         <input type="text" data-testid="query-input" onChange={ this.handleChange } />
         <button
           type="submit"
           data-testid="query-button"
-          onClick={ this.handleClick }
+          disabled={ searchDisabled }
+          onClick={ handleClickSearch }
         >
           Pesquisar
         </button>
@@ -50,5 +35,12 @@ class Search extends React.Component {
     );
   }
 }
+
+Search.propTypes = {
+  searchDisabled: PropTypes.bool.isRequired,
+  handleClickSearch: PropTypes.func.isRequired,
+  products: PropTypes.arrayOf.isRequired,
+  updateSearchWord: PropTypes.func.isRequired,
+};
 
 export default Search;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
 import './style/sidebar.css';
 
@@ -17,6 +18,12 @@ class Sidebar extends Component {
     });
   }
 
+  handleClick = ({ target }) => {
+    const { id } = target;
+    const { handleClickSideBar } = this.props;
+    handleClickSideBar(id);
+  }
+
   render() {
     const { categoriesList } = this.state;
     return (
@@ -28,6 +35,7 @@ class Sidebar extends Component {
               name="category"
               type="radio"
               value={ category.name }
+              onClick={ this.handleClick }
             />
             { category.name }
           </label>
@@ -36,5 +44,9 @@ class Sidebar extends Component {
     );
   }
 }
+
+Sidebar.propTypes = {
+  handleClickSideBar: PropTypes.func.isRequired,
+};
 
 export default Sidebar;
