@@ -32,12 +32,12 @@ class ProductDetails extends Component {
   }
 }
 
-// ProductsDetails.propTypes = {
-//   match: PropTypes.shape({
-//     params: PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//     }),
-//   }).isRequired,
-// };
+ProductDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};
 
 export default ProductDetails;
