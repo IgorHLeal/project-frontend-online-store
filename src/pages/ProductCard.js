@@ -11,11 +11,11 @@ class ProductCard extends Component {
     };
   }
 
-  handleClick(event) {
+  handleClick = (event) => {
     event.preventDefault();
-    this.setState = {
+    this.setState({
       click: true,
-    };
+    });
   }
 
   render() {
@@ -26,19 +26,17 @@ class ProductCard extends Component {
         <p>{ product.title }</p>
         <img src={ product.thumbnail } alt={ product.title } />
         <p>{ product.price }</p>
-
         <button
           type="button"
-          onClick={ (event) => this.handleClick(event) }
+          onClick={ this.handleClick }
           id="bttn-detail"
+          data-testid="product-detail-link"
         >
           Detalhes
         </button>
         { click && <Redirect
-          data-testid="product-detail-link"
-          to={ `/products/details/${id}` }
-        /> }
-
+          to={ `/productDetails/${product.id}` }
+        />}
       </div>
     );
   }
