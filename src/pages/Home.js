@@ -22,6 +22,10 @@ class Home extends Component {
     });
   }
 
+  upadateProductDetails = () => {
+
+  }
+
   handleClickSideBar = async (category) => {
     const resultByCategory = await getProductsFromCategory(category);
     this.setState({
@@ -53,7 +57,6 @@ class Home extends Component {
             products={ products }
           />
         </main>
-
       </div>
     );
   }

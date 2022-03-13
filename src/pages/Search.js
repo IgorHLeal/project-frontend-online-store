@@ -12,7 +12,6 @@ class Search extends React.Component {
 
   render() {
     const { searchDisabled, handleClickSearch, products } = this.props;
-    console.log(products);
     return (
       <div className="search">
         <input type="text" data-testid="query-input" onChange={ this.handleChange } />
