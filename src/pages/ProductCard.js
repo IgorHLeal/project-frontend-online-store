@@ -6,7 +6,6 @@ import ButtonCart from './ButtonCart';
 class ProductCard extends Component {
   constructor() {
     super();
-    this.addToCart = this.addToCart.bind(this);
 
     this.state = {
       click: false,
@@ -18,16 +17,6 @@ class ProductCard extends Component {
     this.setState({
       click: true,
     });
-  }
-
-  addToCart({ target }) {
-    const { value } = target;
-    let idProducts = [];
-    if (localStorage.getItem('savedProducts')) {
-      idProducts = JSON.parse(localStorage.getItem('savedProducts'));
-    }
-    idProducts = [...idProducts, value];
-    localStorage.setItem('savedProducts', JSON.stringify(idProducts));
   }
 
   render() {
@@ -49,7 +38,7 @@ class ProductCard extends Component {
         { click && <Redirect
           to={ `/productDetails/${product.id}` }
         />}
-        <ButtonCart productId={ product.id } addToCart={ this.addToCart } />
+        <ButtonCart productId={ product.id } />
       </div>
     );
   }

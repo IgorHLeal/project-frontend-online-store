@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class ButtonCart extends Component {
+class ButtonDetailsCart extends Component {
   addToCart = ({ target }) => {
     const { value } = target;
     let idProducts = [];
@@ -18,7 +18,7 @@ class ButtonCart extends Component {
     return (
       <button
         type="button"
-        data-testid="product-add-to-cart"
+        data-testid="product-detail-add-to-cart"
         value={ productId }
         onClick={ this.addToCart }
       >
@@ -28,8 +28,8 @@ class ButtonCart extends Component {
   }
 }
 
-ButtonCart.propTypes = {
+ButtonDetailsCart.propTypes = {
   productId: PropTypes.objectOf.isRequired,
 };
 
-export default ButtonCart;
+export default ButtonDetailsCart;
