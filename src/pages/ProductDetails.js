@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getProductsFromID } from '../services/api';
 import ButtonDetailsCart from './ButtonDetailsCart';
+import Header from './Header';
 
 class ProductDetails extends Component {
   constructor() {
@@ -24,6 +25,9 @@ class ProductDetails extends Component {
 
     return (
       <>
+        <nav>
+          <Header />
+        </nav>
         <p data-testid="product-detail-name">{product.title}</p>
         <img src={ product.thumbnail } alt={ product.title } />
         <p>{ product.price }</p>
