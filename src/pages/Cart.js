@@ -24,17 +24,14 @@ class Cart extends Component {
           quantityOfProducts[productId] = 1;
         }
       });
-      console.log(quantityOfProducts);
 
       // Promise.all() visto em https://medium.com/sliit-foss/js-async-await-in-array-methods-9142a35c6d6f
       const products = await Promise.all(
-        await Object.keys(quantityOfProducts).map(async (productId) => (
+        Object.keys(quantityOfProducts).map(async (productId) => (
           getProductsFromID(productId)
         )),
       );
-      await console.log(products);
-
-      await this.setState({
+      this.setState({
         quantityOfProducts,
         products,
       });

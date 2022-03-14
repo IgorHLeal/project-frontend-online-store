@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import ButtonCart from './ButtonCart';
 
 class ProductCard extends Component {
   constructor() {
@@ -32,8 +33,6 @@ class ProductCard extends Component {
   render() {
     const { click } = this.state;
     const { product } = this.props;
-    const { addToCart } = this;
-    console.log(product);
     return (
       <div data-testid="product">
         <p>{ product.title }</p>
@@ -50,14 +49,7 @@ class ProductCard extends Component {
         { click && <Redirect
           to={ `/productDetails/${product.id}` }
         />}
-        <button
-          type="button"
-          data-testid="product-add-to-cart"
-          value={ product.id }
-          onClick={ addToCart }
-        >
-          Adicionar ao Carrinho
-        </button>
+        <ButtonCart productId={ product.id } addToCart={ this.addToCart } />
       </div>
     );
   }
